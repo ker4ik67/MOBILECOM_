@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 620" role="img" aria-labelledby="title desc">
+  <title id="title">Визуализация сети и интерфейса мобильного оператора</title>
+  <desc id="desc">Смартфон с экраном личного кабинета, карта покрытия и базовые станции связи.</desc>
+  <defs>
+    <linearGradient id="phone" x1="160" x2="430" y1="42" y2="560" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2b3035"/>
+      <stop offset="1" stop-color="#111416"/>
+    </linearGradient>
+    <linearGradient id="screen" x1="190" x2="400" y1="96" y2="520" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f7f7f2"/>
+      <stop offset="1" stop-color="#dfe8e1"/>
+    </linearGradient>
+    <filter id="shadow" x="0" y="0" width="760" height="620" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="30" stdDeviation="28" flood-color="#000" flood-opacity=".28"/>
+    </filter>
+  </defs>
+  <rect width="760" height="620" fill="none"/>
+  <g opacity=".9">
+    <path d="M450 150c78-46 150-44 216 6" fill="none" stroke="#41c48b" stroke-width="7" stroke-linecap="round"/>
+    <path d="M486 198c50-30 98-29 142 3" fill="none" stroke="#7db9d6" stroke-width="7" stroke-linecap="round"/>
+    <path d="M520 246c27-18 55-17 82 1" fill="none" stroke="#e6b84a" stroke-width="7" stroke-linecap="round"/>
+  </g>
+  <g filter="url(#shadow)">
+    <path d="M168 64c0-27 22-49 49-49h159c27 0 49 22 49 49v492c0 27-22 49-49 49H217c-27 0-49-22-49-49V64Z" fill="url(#phone)"/>
+    <path d="M190 96c0-17 14-31 31-31h151c17 0 31 14 31 31v421c0 17-14 31-31 31H221c-17 0-31-14-31-31V96Z" fill="url(#screen)"/>
+    <rect x="254" y="39" width="86" height="12" rx="6" fill="#0b0d0e"/>
+    <rect x="218" y="123" width="126" height="18" rx="9" fill="#121513"/>
+    <rect x="218" y="155" width="150" height="54" rx="8" fill="#41c48b"/>
+    <path d="M240 188h88" stroke="#121513" stroke-width="12" stroke-linecap="round"/>
+    <rect x="218" y="236" width="150" height="78" rx="8" fill="#121513"/>
+    <circle cx="258" cy="275" r="25" fill="none" stroke="#41c48b" stroke-width="12" stroke-dasharray="120 50"/>
+    <path d="M310 260h38M310 286h30" stroke="#f7f7f2" stroke-width="10" stroke-linecap="round"/>
+    <rect x="218" y="338" width="68" height="82" rx="8" fill="#e6b84a"/>
+    <rect x="300" y="338" width="68" height="82" rx="8" fill="#7db9d6"/>
+    <path d="M238 387h26M320 387h26" stroke="#121513" stroke-width="10" stroke-linecap="round"/>
+    <rect x="218" y="445" width="150" height="44" rx="8" fill="#121513"/>
+    <path d="M242 467h100" stroke="#41c48b" stroke-width="10" stroke-linecap="round"/>
+  </g>
+  <g>
+    <path d="M534 356v184" stroke="#f7f7f2" stroke-width="12" stroke-linecap="round"/>
+    <path d="M470 540h128" stroke="#f7f7f2" stroke-width="12" stroke-linecap="round"/>
+    <path d="m534 356-58 184M534 356l58 184" stroke="#f7f7f2" stroke-width="8" stroke-linecap="round"/>
+    <circle cx="534" cy="332" r="33" fill="#41c48b"/>
+    <path d="M506 313c-40-28-78-28-116 0M562 313c40-28 78-28 116 0" fill="none" stroke="#41c48b" stroke-width="8" stroke-linecap="round"/>
+  </g>
+  <g opacity=".96">
+    <rect x="482" y="82" width="170" height="70" rx="8" fill="#f7f7f2"/>
+    <path d="M506 116h80M506 137h112" stroke="#121513" stroke-width="10" stroke-linecap="round"/>
+    <circle cx="620" cy="116" r="17" fill="#e66b5f"/>
+    <rect x="520" y="410" width="168" height="78" rx="8" fill="#20252a"/>
+    <path d="M548 448h72M548 468h104" stroke="#f7f7f2" stroke-width="9" stroke-linecap="round"/>
+    <circle cx="648" cy="448" r="17" fill="#e6b84a"/>
+  </g>
+</svg>

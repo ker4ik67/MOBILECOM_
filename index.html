@@ -1,0 +1,559 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <!-- файл index.html является отдельной HTML-страницей сайта. -->
+  <!-- кодировка UTF-8 нужна для корректного отображения русского текста. -->
+  <!-- мета-теги помогают браузеру и поисковым системам понять назначение страницы. -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>МобайлКом - оператор сотовой связи</title>
+  <meta name="description" content="МобайлКом: тарифы, услуги, покрытие, личный кабинет и подключение мобильной связи.">
+  <meta name="keywords" content="МобайлКом, оператор связи, тарифы, мобильный интернет, личный кабинет, услуги связи">
+  <meta name="theme-color" content="#f5f7f9">
+  <meta property="og:title" content="МобайлКом - оператор сотовой связи">
+  <meta property="og:description" content="Тарифы, услуги, eSIM, покрытие и личный кабинет МобайлКом.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/network-hero.svg">
+  <link rel="icon" href="assets/mobilecom-logo.svg" type="image/svg+xml">
+  <script>
+    (() => {
+      try {
+        const saved = localStorage.getItem("mobilecom-theme");
+        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const theme = saved || (prefersDark ? "dark" : "light");
+        document.documentElement.dataset.theme = theme;
+        document.querySelector('meta[name="theme-color"]')?.setAttribute("content", theme === "dark" ? "#101316" : "#f5f7f9");
+      } catch {
+        document.documentElement.dataset.theme = "light";
+        document.querySelector('meta[name="theme-color"]')?.setAttribute("content", "#f5f7f9");
+      }
+    })();
+  </script>
+  <!-- общий файл styles.css подключает единое оформление для всех страниц. -->
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <!-- тело страницы содержит видимую часть сайта. -->
+  <div class="app-shell">
+    <!-- app-shell объединяет шапку, основной контент, подвал и мобильное меню. -->
+    <!-- шапка повторяется на всех страницах и содержит логотип, меню и быстрые действия. -->
+    <header class="topbar">
+      <a class="brand" href="index.html" data-route-link="home" aria-current="page" aria-label="МобайлКом">
+        <img class="brand-logo" src="assets/mobilecom-logo.svg" alt="Логотип МобайлКом">
+        <span class="brand-copy">
+          <strong>МобайлКом</strong>
+          <small>связь без лишнего</small>
+        </span>
+      </a>
+      <!-- основная навигация ведет на отдельные HTML-файлы, а не на скрытые блоки одной страницы. -->
+      <nav class="main-nav" aria-label="Основная навигация">
+        <a href="index.html" data-route-link="home" aria-current="page">Главная</a>
+        <a href="pages/stock.html" data-route-link="promos">Акции</a>
+        <a href="pages/tariff.html" data-route-link="tariffs">Тарифы</a>
+        <a href="pages/uslugi.html" data-route-link="services">Услуги</a>
+        <button class="navigator-toggle" type="button" data-open-navigator aria-haspopup="true" aria-expanded="false" aria-controls="navigatorPopover">
+          <span>Навигатор</span>
+          <svg class="chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
+        </button>
+        <a href="pages/cabinet.html" data-route-link="cabinet">Кабинет</a>
+      </nav>
+
+      <!-- блок быстрых действий содержит переключатель темы, вход и корзину. -->
+      <div class="top-actions">
+        <button class="icon-button theme-toggle" type="button" data-theme-toggle aria-label="Включить темную тему" title="Сменить тему">
+          <svg class="theme-icon sun-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2"></path>
+            <path d="M12 20v2"></path>
+            <path d="m4.9 4.9 1.4 1.4"></path>
+            <path d="m17.7 17.7 1.4 1.4"></path>
+            <path d="M2 12h2"></path>
+            <path d="M20 12h2"></path>
+            <path d="m6.3 17.7-1.4 1.4"></path>
+            <path d="m19.1 4.9-1.4 1.4"></path>
+          </svg>
+          <svg class="theme-icon moon-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.7 6.7 0 0 0 9.8 9.8z"></path>
+          </svg>
+        </button>
+        <button class="icon-button" type="button" data-open-login aria-label="Войти в личный кабинет" title="Войти">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+            <path d="m10 17 5-5-5-5"></path>
+            <path d="M15 12H3"></path>
+          </svg>
+        </button>
+        <button class="cart-pill" type="button" data-open-cart aria-label="Открыть корзину">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="8" cy="21" r="1"></circle>
+            <circle cx="19" cy="21" r="1"></circle>
+            <path d="M2.1 2.1h2l2.4 12.1a2 2 0 0 0 2 1.6h8.9a2 2 0 0 0 2-1.5L21 7H5.2"></path>
+          </svg>
+          <span id="cartCount">0</span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <!-- основной раздел этой страницы - Главная страница. -->
+      <!-- Главная собирает промо-блоки, популярные тарифы, услуги, покрытие, поддержку и отзывы. -->
+      <!-- классы page и is-active используются скриптом для показа текущей страницы. -->
+<section class="page is-active" id="page-home" data-title="МобайлКом - главная" data-description="Главная страница МобайлКом с акциями, предложениями, тарифами и FAQ." data-keywords="МобайлКом главная, акции связи, предложения оператора, FAQ мобильная связь">
+        <section class="full-bleed-slider" data-slider="promo" aria-label="Акции и предложения">
+          <div class="slider-viewport">
+            <div class="slider-track">
+              <article class="promo-slide">
+                <img class="promo-photo" src="assets/promo-porting.jpg" alt="" loading="eager">
+                <div class="promo-copy">
+                  <p class="eyebrow">Акция месяца</p>
+                  <h1>30 дней связи за 0 ₽ при переходе со своим номером</h1>
+                  <p>Перенесите номер в МобайлКом и получите первый месяц тарифа без абонентской платы.</p>
+                  <a class="primary-button" href="pages/tariff.html">Выбрать тариф</a>
+                </div>
+                <div class="promo-visual" aria-hidden="true">
+                  <div class="slide-dashboard">
+                    <span class="slide-label">Переход</span>
+                    <strong>0 ₽</strong>
+                    <small>первый месяц</small>
+                    <div class="slide-progress"><span style="--value: 82%"></span></div>
+                  </div>
+                  <div class="slide-feature-list">
+                    <span>30 дней связи</span>
+                    <span>сохранение номера</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="promo-slide">
+                <img class="promo-photo" src="assets/promo-family.jpg" alt="" loading="lazy">
+                <div class="promo-copy">
+                  <p class="eyebrow">Для семьи</p>
+                  <h1>Один пакет интернета для нескольких номеров</h1>
+                  <p>Настройте общий лимит, оплачивайте связь близких и контролируйте расходы в одном кабинете.</p>
+                  <a class="primary-button" href="pages/cabinet.html">Открыть кабинет</a>
+                </div>
+                <div class="promo-visual" aria-hidden="true">
+                  <div class="slide-dashboard">
+                    <span class="slide-label">Семья</span>
+                    <strong>4 номера</strong>
+                    <small>в одном кабинете</small>
+                    <div class="slide-progress"><span style="--value: 68%"></span></div>
+                  </div>
+                  <div class="slide-feature-list">
+                    <span>общий интернет</span>
+                    <span>контроль расходов</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="promo-slide">
+                <img class="promo-photo" src="assets/promo-internet.jpg" alt="" loading="lazy">
+                <div class="promo-copy">
+                  <p class="eyebrow">Интернет</p>
+                  <h1>60 ГБ для работы, видео и навигации</h1>
+                  <p>Тарифы с большим пакетом трафика, понятной ценой и быстрым подключением без визита в офис.</p>
+                  <a class="primary-button" href="pages/tariff.html">Смотреть тарифы</a>
+                </div>
+                <div class="promo-visual" aria-hidden="true">
+                  <div class="slide-dashboard">
+                    <span class="slide-label">Интернет</span>
+                    <strong>60 ГБ</strong>
+                    <small>для видео и работы</small>
+                    <div class="slide-progress"><span style="--value: 74%"></span></div>
+                  </div>
+                  <div class="slide-feature-list">
+                    <span>быстро онлайн</span>
+                    <span>без переплат</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="promo-slide">
+                <img class="promo-photo" src="assets/promo-business.jpg" alt="" loading="lazy">
+                <div class="promo-copy">
+                  <p class="eyebrow">Бизнесу</p>
+                  <h1>Корпоративная связь и виртуальная АТС за 1 день</h1>
+                  <p>Подключите номера для команды, аналитику расходов и переадресацию звонков в одном пакете.</p>
+                  <a class="primary-button" href="pages/uslugi.html">Подключить услуги</a>
+                </div>
+                <div class="promo-visual" aria-hidden="true">
+                  <div class="slide-dashboard">
+                    <span class="slide-label">Бизнес</span>
+                    <strong>АТС</strong>
+                    <small>номера, отчеты, переадресация</small>
+                    <div class="slide-progress"><span style="--value: 88%"></span></div>
+                  </div>
+                  <div class="slide-feature-list">
+                    <span>запись звонков</span>
+                    <span>аналитика расходов</span>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+          <div class="slider-controls">
+            <button class="slider-arrow" type="button" data-slider-prev aria-label="Предыдущее предложение">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg>
+            </button>
+            <div class="slider-dots" data-slider-dots aria-label="Выбор слайда"></div>
+            <button class="slider-arrow" type="button" data-slider-next aria-label="Следующее предложение">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg>
+            </button>
+          </div>
+        </section>
+
+        <section class="content-band">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Популярное</p>
+              <h2>Тарифы для разных сценариев</h2>
+            </div>
+            <a class="text-link" href="pages/tariff.html">Все тарифы</a>
+          </div>
+          <div class="tariff-grid" id="homeTariffs"></div>
+        </section>
+
+        <section class="content-band split-layout">
+          <div>
+            <p class="eyebrow">Быстрый доступ</p>
+            <h2>Частые услуги</h2>
+          </div>
+          <div class="service-row" id="homeServices"></div>
+        </section>
+
+        <section class="content-band photo-story" aria-label="Фотографии повседневного использования связи">
+          <div class="section-heading">
+            <div>
+              <h2>Связь в привычных сценариях</h2>
+            </div>
+          </div>
+          <div class="life-photo-grid">
+            <figure class="life-photo-card is-large">
+              <img src="assets/life-work.jpg" alt="Команда обсуждает рабочие задачи" loading="lazy">
+              <figcaption>Работа и видеозвонки</figcaption>
+            </figure>
+            <figure class="life-photo-card">
+              <img src="assets/life-friends.jpg" alt="Друзья смотрят в смартфон" loading="lazy">
+              <figcaption>Общение без пауз</figcaption>
+            </figure>
+            <figure class="life-photo-card">
+              <img src="assets/life-business.jpg" alt="Люди в офисе работают с ноутбуком" loading="lazy">
+              <figcaption>Бизнес-связь</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section class="content-band" id="coverage">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Покрытие</p>
+              <h2>Связь в городе и пригороде</h2>
+            </div>
+          </div>
+          <div class="coverage-layout">
+            <section class="coverage-map" aria-label="Схема покрытия">
+              <img class="coverage-photo" src="assets/coverage-city.jpg" alt="" loading="lazy">
+              <span class="map-ring ring-a"></span>
+              <span class="map-ring ring-b"></span>
+              <span class="map-ring ring-c"></span>
+              <span class="map-station station-a"></span>
+              <span class="map-station station-b"></span>
+              <span class="map-station station-c"></span>
+            </section>
+            <section class="coverage-info">
+              <h2>Стабильная сеть для ежедневных задач</h2>
+              <p>Покрытие рассчитано на звонки, навигацию, мессенджеры, видео и рабочие сервисы. Перед подключением можно проверить адрес через поддержку.</p>
+              <div class="metric-grid">
+                <div><strong>98%</strong><span>городского покрытия</span></div>
+                <div><strong>4G/5G</strong><span>доступные стандарты</span></div>
+                <div><strong>24/7</strong><span>мониторинг сети</span></div>
+              </div>
+              <form class="coverage-check" id="coverageCheckForm">
+                <label>
+                  <span>Проверить адрес</span>
+                  <input id="coverageAddress" name="address" required placeholder="Казань, ул. Баумана, 10">
+                </label>
+                <label>
+                  <span>Что важно</span>
+                  <select id="coverageNeed" name="need">
+                    <option value="home">Дом и работа</option>
+                    <option value="travel">Поездки по городу</option>
+                    <option value="business">Бизнес-точка</option>
+                  </select>
+                </label>
+                <button class="primary-button full" type="submit">Проверить</button>
+                <div class="coverage-result" id="coverageResult" aria-live="polite"></div>
+              </form>
+            </section>
+          </div>
+        </section>
+
+        <section class="content-band" id="support">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Поддержка</p>
+              <h2>Помощь абонентам</h2>
+            </div>
+          </div>
+          <div class="support-grid">
+            <article class="info-card">
+              <img class="card-photo" src="assets/support-team.jpg" alt="Специалисты службы поддержки за работой" loading="lazy">
+              <h2>Связаться с нами</h2>
+              <p>Оставьте заявку в корзине или напишите в поддержку. Мы поможем подобрать тариф и проверить подключение.</p>
+              <button class="primary-button compact" type="button" data-open-support-request>Оставить обращение</button>
+            </article>
+            <article class="info-card">
+              <img class="card-photo" src="assets/support-call.jpg" alt="Оператор отвечает клиенту онлайн" loading="lazy">
+              <h2>Горячая линия</h2>
+              <p>Единый номер для вопросов по тарифам, переносу номера, личному кабинету и дополнительным услугам.</p>
+              <a class="ghost-button compact" href="tel:88005553535">8-800-555-35-35</a>
+            </article>
+            <article class="info-card">
+              <img class="card-photo" src="assets/offer-esim.jpg" alt="Смартфон на столе в офисе обслуживания" loading="lazy">
+              <h2>Офис</h2>
+              <p>Россия, 420111, г. Казань, ул. Баумана, д. 10. Приходите с паспортом для оформления SIM-карты.</p>
+              <a class="ghost-button compact" href="index.html#feedback">Оставить отзыв</a>
+            </article>
+          </div>
+        </section>
+
+        <section class="content-band" id="feedback">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Обратная связь</p>
+              <h2>Напишите нам</h2>
+            </div>
+          </div>
+          <aside class="feedback-panel">
+            <form id="feedbackForm">
+              <label>Имя <input name="name" required placeholder="Ваше имя"></label>
+              <label>Телефон или email <input name="contact" required placeholder="+7 900 000-00-00"></label>
+              <label>Оценка
+                <select name="rating" required>
+                  <option value="5">5 - отлично</option>
+                  <option value="4">4 - хорошо</option>
+                  <option value="3">3 - нормально</option>
+                  <option value="2">2 - есть проблемы</option>
+                  <option value="1">1 - плохо</option>
+                </select>
+              </label>
+              <label>Сообщение <textarea name="message" required rows="5" placeholder="Расскажите, что важно улучшить"></textarea></label>
+              <button class="primary-button full" type="submit">Отправить отзыв</button>
+            </form>
+          </aside>
+        </section>
+
+        <section class="content-band" id="reviews">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Отзывы</p>
+              <h2>Последние отзывы</h2>
+            </div>
+          </div>
+          <div class="feedback-layout reviews-only">
+            <section class="reviews-panel">
+              <div class="review-toolbar">
+                <div class="review-stats" id="reviewStats"></div>
+                <label>
+                  <span>Фильтр</span>
+                  <select id="reviewFilter">
+                    <option value="all">Все оценки</option>
+                    <option value="5">Только 5</option>
+                    <option value="4">4 и выше</option>
+                    <option value="3">3 и выше</option>
+                  </select>
+                </label>
+              </div>
+              <div class="reviews-list" id="reviewsList"></div>
+            </section>
+          </div>
+          <section class="map-panel" aria-label="Офис на Яндекс Карте">
+            <div>
+              <p class="eyebrow">Карта</p>
+              <h2>Офис в Казани</h2>
+              <p>Россия, 420111, г. Казань, ул. Баумана, д. 10</p>
+            </div>
+            <iframe title="Яндекс карта офиса МобайлКом" src="https://yandex.ru/map-widget/v1/?ll=49.122128%2C55.788740&z=16&pt=49.122128%2C55.788740%2Cpm2rdm" loading="lazy"></iframe>
+          </section>
+        </section>
+
+        <section class="content-band faq-band" id="faq">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">FAQ</p>
+              <h2>Вопросы перед подключением</h2>
+            </div>
+          </div>
+          <div class="faq-list">
+            <details open>
+              <summary>Можно ли перейти со своим номером?</summary>
+              <p>Да. Оставьте заявку на тариф, и специалист подскажет срок переноса и проверит данные владельца номера.</p>
+            </details>
+            <details>
+              <summary>Как быстро подключается тариф?</summary>
+              <p>Заявка создается сразу после оформления. Для eSIM подключение возможно в день обращения, для SIM-карты зависит от доставки.</p>
+            </details>
+            <details>
+              <summary>Где посмотреть остатки пакетов?</summary>
+              <p>Остатки интернета, минут и SMS доступны в личном кабинете. Там же можно пополнить баланс и подключить услуги.</p>
+            </details>
+            <details>
+              <summary>Можно ли подключить услуги отдельно?</summary>
+              <p>Да. В разделе услуг можно добавить антиспам, роуминг, облако, виртуальную АТС и другие опции.</p>
+            </details>
+          </div>
+        </section>
+      </section>
+<section class="page" id="page-legal" data-title="Документы - МобайлКом" data-description="Юридическая информация МобайлКом: реквизиты, политика конфиденциальности и условия обслуживания." data-keywords="документы МобайлКом, реквизиты, политика конфиденциальности, условия обслуживания">
+        <div class="page-head">
+          <div>
+            <p class="eyebrow">Информация</p>
+            <h1>Документы</h1>
+          </div>
+        </div>
+        <div class="legal-grid">
+          <section class="legal-section">
+            <h2>Реквизиты</h2>
+            <p>АО «МобайлКом», ИНН 1655000000, ОГРН 1261600000000. Юридический адрес: Россия, 420111, г. Казань, ул. Баумана, д. 10.</p>
+          </section>
+          <section class="legal-section">
+            <h2>Политика конфиденциальности</h2>
+            <p>Данные из форм используются для обработки заявки, обратной связи и настройки услуг связи. Пользователь может запросить уточнение или удаление данных через поддержку.</p>
+          </section>
+          <section class="legal-section">
+            <h2>Условия обслуживания</h2>
+            <p>Тарифы и услуги подключаются после подтверждения личности абонента. Итоговые параметры фиксируются в заявке и могут быть уточнены специалистом перед подключением.</p>
+          </section>
+          <section class="legal-section">
+            <h2>Лицензии</h2>
+            <p>Раздел подготовлен для курсового проекта. При переносе сайта в реальную эксплуатацию сюда нужно добавить номера действующих лицензий и ссылки на официальные документы.</p>
+          </section>
+        </div>
+      </section>
+<section class="page centered-page" id="page-thanks" data-title="Спасибо - МобайлКом" data-description="Заявка на подключение услуг МобайлКом успешно отправлена." data-keywords="заявка отправлена, подключение МобайлКом, спасибо">
+        <div class="state-mark">✓</div>
+        <h1>Заявка отправлена</h1>
+        <p>Специалист свяжется с вами для подтверждения подключения.</p>
+        <a class="primary-button compact" href="index.html">На главную</a>
+      </section>
+<section class="page centered-page" id="page-404" data-title="Страница не найдена - МобайлКом" data-description="Служебная страница 404 сайта МобайлКом." data-keywords="404, страница не найдена, МобайлКом">
+        <div class="state-mark muted">404</div>
+        <h1>Страница не найдена</h1>
+        <p>Проверьте адрес или вернитесь к каталогу тарифов.</p>
+        <a class="primary-button compact" href="pages/tariff.html">К тарифам</a>
+      </section>    </main>
+    <!-- подвал содержит контакты, служебные ссылки и переход в админ-панель. -->
+    <footer class="footer">
+      <div>
+        <strong>АО «МобайлКом»</strong>
+        <span>Россия, 420111, г. Казань, ул. Баумана, д. 10</span>
+      </div>
+      <div>
+        <a href="pages/stock.html" data-route-link="promos">Акции</a>
+        <a href="index.html#coverage" data-section-link="coverage">Покрытие</a>
+        <a href="index.html#support" data-section-link="support">Поддержка</a>
+        <a href="index.html#reviews" data-route-link="reviews">Отзывы</a>
+        <a href="index.html#legal" data-route-link="legal">Документы</a>
+        <a href="pages/admin.html" data-route-link="admin">Администратор</a>
+      </div>
+      <div>
+        <span>8-800-555-35-35</span>
+        <span>info@mobilecom-rt.ru</span>
+      </div>
+    </footer>
+    <!-- мобильное меню дублирует главные разделы для экранов телефона. -->
+    <nav class="mobile-nav" aria-label="Мобильная навигация">
+      <a href="index.html" data-route-link="home" aria-current="page">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"></path></svg>
+        <span>Главная</span>
+      </a>
+      <a href="pages/stock.html" data-route-link="promos">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8"></path><path d="M2 7h20v5H2z"></path><path d="M12 22V7"></path><path d="M12 7H7.5a2.5 2.5 0 1 1 2.5-2.5C10 6 12 7 12 7z"></path><path d="M12 7h4.5A2.5 2.5 0 1 0 14 4.5C14 6 12 7 12 7z"></path></svg>
+        <span>Акции</span>
+      </a>
+      <a href="pages/tariff.html" data-route-link="tariffs">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 13V6a2 2 0 0 0-2-2H6L3 7v10a2 2 0 0 0 2 2h7"></path><path d="M14 18h7"></path><path d="M18 14v8"></path></svg>
+        <span>Тарифы</span>
+      </a>
+      <a href="pages/uslugi.html" data-route-link="services">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v20"></path><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7H14a3.5 3.5 0 0 1 0 7H6"></path></svg>
+        <span>Услуги</span>
+      </a>
+      <button class="navigator-toggle" type="button" data-open-navigator aria-haspopup="true" aria-expanded="false" aria-controls="navigatorPopover">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h18"></path><path d="M12 3v18"></path><path d="m16 8 5 4-5 4"></path><path d="m8 16-5-4 5-4"></path></svg>
+        <span>Навигатор</span>
+        <svg class="chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
+      </button>
+      <a href="pages/cabinet.html" data-route-link="cabinet">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 21a8 8 0 1 0-16 0"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        <span>Кабинет</span>
+      </a>
+    </nav>
+  </div>
+  <!-- всплывающий навигатор открывает якорные блоки главной страницы. -->
+  <div class="navigator-popover" id="navigatorPopover" role="menu" aria-label="Навигатор" hidden>
+    <strong class="navigator-title">Навигатор</strong>
+    <div class="navigator-list">
+      <a class="navigator-link" href="index.html#coverage" data-navigator-target="coverage" role="menuitem">
+        <span class="navigator-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15 15 0 0 1 0 20"></path><path d="M12 2a15 15 0 0 0 0 20"></path></svg>
+        </span>
+        <span>
+          <strong>Покрытие</strong>
+          <span>Карта сети и проверка адреса</span>
+        </span>
+      </a>
+      <a class="navigator-link" href="index.html#support" data-navigator-target="support" role="menuitem">
+        <span class="navigator-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.4 19.4 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.8a2 2 0 0 1-.4 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"></path></svg>
+        </span>
+        <span>
+          <strong>Поддержка</strong>
+          <span>Контакты, горячая линия и обращение</span>
+        </span>
+      </a>
+      <a class="navigator-link" href="index.html#reviews" data-navigator-target="reviews" role="menuitem">
+        <span class="navigator-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"></path></svg>
+        </span>
+        <span>
+          <strong>Отзывы</strong>
+          <span>Мнения клиентов и оценки</span>
+        </span>
+      </a>
+      <a class="navigator-link" href="index.html#feedback" data-navigator-target="feedback" role="menuitem">
+        <span class="navigator-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5z"></path></svg>
+        </span>
+        <span>
+          <strong>Обратная связь</strong>
+          <span>Форма сообщения для компании</span>
+        </span>
+      </a>
+    </div>
+  </div>
+  <!-- корзина вынесена в модальное окно и доступна с любой страницы. -->
+  <dialog id="cartDialog" aria-label="Корзина">
+    <button class="dialog-close" type="button" data-close-cart aria-label="Закрыть">×</button>
+    <div class="dialog-body cart-modal">
+      <p class="eyebrow">Корзина</p>
+      <h2>Выбранные позиции</h2>
+      <div class="cart-list modal-cart-list" id="cartModalList"></div>
+      <div class="checkout-row"><span>Позиции</span><strong id="cartModalCount">0</strong></div>
+      <div class="checkout-row"><span>Ежемесячно</span><strong id="cartModalTotal">0 ₽</strong></div>
+      <button class="primary-button full" type="button" id="cartModalCheckout">Оформить заказ</button>
+      <button class="ghost-button full" type="button" id="cartModalClear">Очистить корзину</button>
+    </div>
+  </dialog>
+  <!-- универсальное диалоговое окно используется для входа, оплаты и форм. -->
+  <dialog id="appDialog">
+    <button class="dialog-close" type="button" data-close-dialog aria-label="Закрыть">×</button>
+    <div id="dialogContent"></div>
+  </dialog>
+  <!-- общий script.js подключается после разметки, чтобы элементы уже существовали в DOM. -->
+  <script src="assets/script.js"></script>
+</body>
+</html>
+
+
+
